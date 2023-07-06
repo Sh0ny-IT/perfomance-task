@@ -31,7 +31,7 @@
         © 1997–2023 ООО «Яндекс»
     </div>
 </footer>
-<!--<script src="vendors/babel.min.js"></script>-->
+
 <script>
   function Header() {
     let [expanded, setExpanded] = React.useState(false);
@@ -88,7 +88,8 @@
       )
     );
   }
-  function Event(props) {
+
+  const Event = React.memo((props)=> {
     const ref = React.useRef();
     const { onSize } = props;
     React.useEffect(() => {
@@ -118,7 +119,7 @@
         )
       )
     );
-  }
+  });
 
   const TABS = {
   all: {
@@ -231,6 +232,7 @@
     TABS.all.items = [...TABS.all.items, ...TABS.all.items];
   }
   const TABS_KEYS = Object.keys(TABS);
+
   function Main() {
     const ref = React.useRef();
     const initedRef = React.useRef(false);
